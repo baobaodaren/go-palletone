@@ -67,6 +67,9 @@ const (
 	GetReceiptsMsg = 0x22
 	ReceiptsMsg    = 0x23
 
+	ContractExecMsg = 0x10
+	ContractSigMsg  = 0x11
+
 	//TransitionReq  = 0x11
 	//TransitionResp = 0x12
 )
@@ -74,7 +77,7 @@ const (
 type errCode int
 
 const (
-	ErrMsgTooLarge = iota
+	ErrMsgTooLarge             = iota
 	ErrDecode
 	ErrInvalidMsgCode
 	ErrProtocolVersionMismatch

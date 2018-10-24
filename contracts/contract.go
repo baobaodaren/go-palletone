@@ -14,6 +14,14 @@ import (
 
 var initFlag int32
 
+type ContractInf interface {
+	Close() error
+	Install(chainID string, ccName string, ccPath string, ccVersion string) (payload *unit.ContractTplPayload, err error)
+	Deploy(chainID string, templateId []byte, txid string, args [][]byte, timeout time.Duration) (deployId []byte, deployPayload *unit.ContractDeployPayload, e error)
+	Invoke(chainID string, deployId []byte, txid string, args [][]byte, timeout time.Duration) (*unit.ContractInvokePayload, error)
+	Stop(chainID string, deployId []byte, txid string, deleteImage bool) error
+}
+
 type Contract struct {
 	cfg  *contractcfg.Config
 	name string

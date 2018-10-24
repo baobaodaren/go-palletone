@@ -33,11 +33,13 @@ import (
 	"github.com/palletone/go-palletone/common/p2p/discover"
 	"github.com/palletone/go-palletone/common/rlp"
 	mp "github.com/palletone/go-palletone/consensus/mediatorplugin"
+	"github.com/palletone/go-palletone/consensus/jury"
 	"github.com/palletone/go-palletone/core"
 	"github.com/palletone/go-palletone/dag"
 	"github.com/palletone/go-palletone/dag/modules"
 	"github.com/palletone/go-palletone/ptn/downloader"
 	"github.com/palletone/go-palletone/ptn/fetcher"
+	"github.com/palletone/go-palletone_a/consensus/jury"
 )
 
 const (
@@ -116,6 +118,14 @@ type ProtocolManager struct {
 	// append by Albert·Gou
 	vssResponseCh  chan mp.VSSResponseEvent
 	vssResponseSub event.Subscription
+
+	//contract exec
+	contractProc    contractInf
+	contractExecCh  chan jury.ContractExeEvent
+	contractExecSub event.Subscription
+
+	contractBroadcastCh  chan jury.ContractSigEvent
+	contractBroadcastSub event.Subscription
 
 	// wait group is used for graceful shutdowns during downloading
 	// and processing
@@ -330,6 +340,15 @@ func (pm *ProtocolManager) Start(srvr *p2p.Server, maxPeers int) {
 	pm.vssResponseCh = make(chan mp.VSSResponseEvent)
 	pm.vssResponseSub = pm.producer.SubscribeVSSResponseEvent(pm.vssResponseCh)
 	go pm.vssResponseBroadcastLoop()
+
+	//contract exec
+	pm.contractExecCh = make(chan jury.ContractExeEvent)
+	pm.contractExecSub = pm.contractProc.SubscribeContractEvent(pm.contractExecCh)
+	go pm.contractDealRecvLoop()
+
+	//pm.contractBroadcastCh = make(chan jury.ContractSigEvent)
+	//pm.contractBroadcastSub = pm.contractProc.SubscribeContractEvent(pm.contractBroadcastCh)
+	//go pm.contractDealRecvLoop()
 }
 
 func (pm *ProtocolManager) Stop() {
@@ -453,7 +472,7 @@ func (pm *ProtocolManager) handleMsg(p *peer) error {
 		// Status messages should never arrive after the handshake
 		return pm.StatusMsg(msg, p)
 
-	// Block header query, collect the requested headers and reply
+		// Block header query, collect the requested headers and reply
 	case msg.Code == GetBlockHeadersMsg:
 		// Decode the complex header query
 		return pm.GetBlockHeadersMsg(msg, p)
@@ -492,7 +511,7 @@ func (pm *ProtocolManager) handleMsg(p *peer) error {
 	case msg.Code == ConsensusMsg:
 		return pm.ConsensusMsg(msg, p)
 
-	// append by Albert·Gou
+		// append by Albert·Gou
 	case msg.Code == NewUnitMsg:
 		// Retrieve and decode the propagated new produced unit
 		return pm.NewUnitMsg(msg, p)
@@ -501,8 +520,8 @@ func (pm *ProtocolManager) handleMsg(p *peer) error {
 	case msg.Code == SigShareMsg:
 		return pm.SigShareMsg(msg, p)
 
-	//21*21 resp
-	// append by Albert·Gou
+		//21*21 resp
+		// append by Albert·Gou
 	case msg.Code == VSSDealMsg:
 		return pm.VSSDealMsg(msg, p)
 
@@ -512,6 +531,12 @@ func (pm *ProtocolManager) handleMsg(p *peer) error {
 
 	case msg.Code == GroupSigMsg:
 		return pm.GroupSigMsg(msg, p)
+
+	case msg.Code == ContractExecMsg:
+		return pm.ContractExecMsg(msg, p)
+
+	case msg.Code == ContractSigMsg:
+		return pm.ContractSigMsg(msg, p)
 
 	default:
 		return errResp(ErrInvalidMsgCode, "%v", msg.Code)
@@ -539,7 +564,7 @@ func (self *ProtocolManager) txBroadcastLoop() {
 			log.Debug("=====ProtocolManager=====", "txBroadcastLoop event.Tx", event.Tx)
 			self.BroadcastTx(event.Tx.Hash(), event.Tx)
 
-		// Err() channel will be closed when unsubscribing.
+			// Err() channel will be closed when unsubscribing.
 		case <-self.txSub.Err():
 			return
 		}
@@ -589,7 +614,7 @@ func (self *ProtocolManager) ceBroadcastLoop() {
 		case event := <-self.ceCh:
 			self.BroadcastCe(event.Ce)
 
-		// Err() channel will be closed when unsubscribing.
+			// Err() channel will be closed when unsubscribing.
 		case <-self.ceSub.Err():
 			return
 		}
@@ -606,7 +631,7 @@ func (pm *ProtocolManager) BroadcastCe(ce string) {
 // NodeInfo represents a short summary of the PalletOne sub-protocol metadata
 // known about the host peer.
 type NodeInfo struct {
-	Network uint64 `json:"network"` // PalletOne network ID (1=Frontier, 2=Morden, Ropsten=3, Rinkeby=4)
+	Network uint64      `json:"network"` // PalletOne network ID (1=Frontier, 2=Morden, Ropsten=3, Rinkeby=4)
 	Index   uint64
 	Genesis common.Hash `json:"genesis"` // SHA3 hash of the host's genesis block
 	Head    common.Hash `json:"head"`    // SHA3 hash of the host's best owned block

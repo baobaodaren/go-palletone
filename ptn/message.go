@@ -30,6 +30,7 @@ import (
 	mp "github.com/palletone/go-palletone/consensus/mediatorplugin"
 	"github.com/palletone/go-palletone/dag/modules"
 	"github.com/palletone/go-palletone/ptn/downloader"
+	"github.com/palletone/go-palletone/consensus/jury"
 )
 
 func (pm *ProtocolManager) StatusMsg(msg p2p.Msg, p *peer) error {
@@ -447,5 +448,25 @@ func (pm *ProtocolManager) GroupSigMsg(msg p2p.Msg, p *peer) error {
 		return errResp(ErrDecode, "%v: %v", msg, err)
 	}
 	//TODO call dag
+	return nil
+}
+
+func (pm *ProtocolManager) ContractExecMsg(msg p2p.Msg, p *peer) error {
+	var event jury.ContractExeEvent
+	if err := msg.Decode(&event); err != nil {
+		log.Info("===ContractExecMsg===", "err:", err)
+		return errResp(ErrDecode, "%v: %v", msg, err)
+	}
+	pm.contractProc.ProcessContractEvent(&event)
+	return nil
+}
+
+func (pm *ProtocolManager) ContractSigMsg(msg p2p.Msg, p *peer) error {
+	var event jury.ContractSigEvent
+	if err := msg.Decode(&event); err != nil {
+		log.Info("===ContractExecMsg===", "err:", err)
+		return errResp(ErrDecode, "%v: %v", msg, err)
+	}
+	pm.contractProc.ProcessContractSigEvent(&event)
 	return nil
 }

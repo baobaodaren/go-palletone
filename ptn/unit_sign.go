@@ -11,6 +11,7 @@
    You should have received a copy of the GNU General Public License
    along with go-palletone.  If not, see <http://www.gnu.org/licenses/>.
 */
+
 /*
  * @author PalletOne core developer Albert·Gou <dev@pallet.one>
  * @date 2018
@@ -146,7 +147,7 @@ func (self *ProtocolManager) groupSigBroadcastLoop() {
 		case event := <-self.groupSigCh:
 			self.BroadcastGroupSig(&event)
 
-		// Err() channel will be closed when unsubscribing.
+			// Err() channel will be closed when unsubscribing.
 		case <-self.groupSigSub.Err():
 			return
 		}
