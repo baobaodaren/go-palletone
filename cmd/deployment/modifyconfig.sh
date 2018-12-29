@@ -66,7 +66,7 @@ newAddress="Address=\"$account\""
 sed -i '/^Address/c'$newAddress'' ptn-config.toml
 
 
-newPassword="Password=\"1\""
+newPassword="Password=\"palletone@!@#$%^\""
 sed -i '/^Password/c'$newPassword'' ptn-config.toml
 
 
