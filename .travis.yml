@@ -9,6 +9,7 @@ language:
     - go
 go: 
     - 1.10.8
+    - 1.12.4
 script:
     - go build ./cmd/gptn
     - $GOPATH/bin/goveralls -service=travis-ci

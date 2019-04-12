@@ -898,6 +898,12 @@
 			"revisionTime": "2019-01-24T15:29:07Z"
 		},
 		{
+			"checksumSHA1": "ySNRtIvC6kLJT33VJWnqzWXzLAM=",
+			"path": "go.dedis.ch/kyber",
+			"revision": "f5ea196ba5a6299e76019c99a625e51780b18648",
+			"revisionTime": "2019-03-25T09:40:42Z"
+		},
+		{
 			"checksumSHA1": "STqjfkZmEcxXSkZ2lrGB+D0odAA=",
 			"path": "go.dedis.ch/kyber/pairing/bn256",
 			"revision": "f5ea196ba5a6299e76019c99a625e51780b18648",
