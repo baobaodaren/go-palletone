@@ -45,7 +45,7 @@ install:
     - sudo -H pip install robotframework-requests
     - sudo -H pip install demjson 
     - sudo -H pip install pexpect 
-    - sudo -H apt-get install expect
+    #- sudo -H apt-get install expect
     #- sudo -H apt-get install jq tcl tk
 
 addons:
