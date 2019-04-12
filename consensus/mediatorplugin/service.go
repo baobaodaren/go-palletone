@@ -24,9 +24,9 @@ import (
 	"sync"
 	"time"
 
-	"go.dedis.ch/kyber/v3"
-	"go.dedis.ch/kyber/v3/pairing/bn256"
-	"go.dedis.ch/kyber/v3/share/dkg/pedersen"
+	"go.dedis.ch/kyber"
+	"go.dedis.ch/kyber/pairing/bn256"
+	"go.dedis.ch/kyber/share/dkg/pedersen"
 	"github.com/palletone/go-palletone/common"
 	"github.com/palletone/go-palletone/common/event"
 	"github.com/palletone/go-palletone/common/log"

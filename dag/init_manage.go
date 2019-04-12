@@ -24,7 +24,7 @@ import (
 	"fmt"
 	"time"
 
-	"go.dedis.ch/kyber/v3/sign/bls"
+	"go.dedis.ch/kyber/sign/bls"
 	"github.com/palletone/go-palletone/common"
 	"github.com/palletone/go-palletone/common/hexutil"
 	"github.com/palletone/go-palletone/common/log"

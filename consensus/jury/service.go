@@ -24,7 +24,7 @@ import (
 
 	"fmt"
 
-	"go.dedis.ch/kyber/v3"
+	"go.dedis.ch/kyber"
 	"github.com/palletone/go-palletone/common"
 	"github.com/palletone/go-palletone/common/crypto"
 	"github.com/palletone/go-palletone/common/event"
