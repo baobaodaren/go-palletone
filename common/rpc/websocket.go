@@ -29,9 +29,9 @@ import (
 	"strings"
 	"time"
 
+	"github.com/fatih/set"
 	"github.com/palletone/go-palletone/common/log"
 	"golang.org/x/net/websocket"
-	"github.com/fatih/set"
 )
 
 // websocketJSONCodec is a custom JSON codec with payload size enforcement and
@@ -84,7 +84,7 @@ func NewWSServer(allowedOrigins []string, srv *Server) *http.Server {
 // websocket upgrade process. When a '*' is specified as an allowed origins all
 // connections are accepted.
 func wsHandshakeValidator(allowedOrigins []string) func(*websocket.Config, *http.Request) error {
-	origins := set.New()
+	origins := set.New(set.ThreadSafe)
 	allowAllOrigins := false
 
 	for _, origin := range allowedOrigins {

@@ -27,10 +27,12 @@ import (
 	"github.com/palletone/go-palletone/common/log"
 	"github.com/palletone/go-palletone/common/p2p"
 	"github.com/palletone/go-palletone/consensus/jury"
+
 	//"github.com/palletone/go-palletone/dag/dagconfig"
-	"github.com/palletone/go-palletone/dag/modules"
-	"github.com/fatih/set"
 	"strings"
+
+	"github.com/fatih/set"
+	"github.com/palletone/go-palletone/dag/modules"
 )
 
 var (
@@ -82,10 +84,10 @@ type peer struct {
 	lightpeermsg map[modules.AssetId]peerMsg
 	lightlock    sync.RWMutex
 
-	knownTxs          *set.Set // Set of transaction hashes known to be known by this peer
-	knownBlocks       *set.Set // Set of block hashes known to be known by this peer
-	knownLightHeaders *set.Set
-	knownGroupSig     *set.Set // Set of block hashes known to be known by this peer
+	knownTxs          set.Interface // Set of transaction hashes known to be known by this peer
+	knownBlocks       set.Interface // Set of block hashes known to be known by this peer
+	knownLightHeaders set.Interface
+	knownGroupSig     set.Interface // Set of block hashes known to be known by this peer
 }
 
 func newPeer(version int, p *p2p.Peer, rw p2p.MsgReadWriter) *peer {
@@ -96,10 +98,10 @@ func newPeer(version int, p *p2p.Peer, rw p2p.MsgReadWriter) *peer {
 		rw:                rw,
 		version:           version,
 		id:                id.TerminalString(),
-		knownTxs:          set.New(),
-		knownBlocks:       set.New(),
-		knownLightHeaders: set.New(),
-		knownGroupSig:     set.New(),
+		knownTxs:          set.New(set.ThreadSafe),
+		knownBlocks:       set.New(set.ThreadSafe),
+		knownLightHeaders: set.New(set.ThreadSafe),
+		knownGroupSig:     set.New(set.ThreadSafe),
 		peermsg:           map[modules.AssetId]peerMsg{},
 		lightpeermsg:      map[modules.AssetId]peerMsg{},
 	}

@@ -27,10 +27,10 @@ import (
 	"sync"
 	"time"
 
+	"github.com/fatih/set"
 	"github.com/palletone/go-palletone/common"
 	"github.com/palletone/go-palletone/common/log"
 	"github.com/palletone/go-palletone/core/accounts"
-	"github.com/fatih/set"
 )
 
 // Minimum amount of time between cache reloads. This limit applies if the platform does
@@ -79,7 +79,7 @@ func newAccountCache(keydir string) (*accountCache, chan struct{}) {
 		keydir: keydir,
 		byAddr: make(map[common.Address][]accounts.Account),
 		notify: make(chan struct{}, 1),
-		fileC:  fileCache{all: set.NewNonTS()},
+		fileC:  fileCache{all: set.New(set.NonThreadSafe)},
 	}
 	ac.watcher = newWatcher(ac)
 	return ac, ac.notify

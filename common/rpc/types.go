@@ -23,8 +23,8 @@ import (
 	"strings"
 	"sync"
 
-	"github.com/palletone/go-palletone/common/hexutil"
 	"github.com/fatih/set"
+	"github.com/palletone/go-palletone/common/hexutil"
 )
 
 // API describes the set of methods offered over the RPC interface
@@ -73,7 +73,7 @@ type Server struct {
 
 	run      int32
 	codecsMu sync.Mutex
-	codecs   *set.Set
+	codecs   set.Interface
 }
 
 // rpcRequest represents a raw incoming RPC request
