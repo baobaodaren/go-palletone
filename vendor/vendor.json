@@ -901,7 +901,9 @@
 			"checksumSHA1": "ySNRtIvC6kLJT33VJWnqzWXzLAM=",
 			"path": "go.dedis.ch/kyber",
 			"revision": "f5ea196ba5a6299e76019c99a625e51780b18648",
-			"revisionTime": "2019-03-25T09:40:42Z"
+			"revisionTime": "2019-03-25T09:40:42Z",
+			"version": "v3",
+			"versionExact": "v3.0.2"
 		},
 		{
 			"checksumSHA1": "STqjfkZmEcxXSkZ2lrGB+D0odAA=",

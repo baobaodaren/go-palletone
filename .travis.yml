@@ -7,9 +7,10 @@ matrix:
 sudo: required
 language: 
     - go
+env: GO111MODULE=on
 go: 
     - 1.10.8
-    - 1.12.4
+    - 1.12.x
 script:
     - go build ./cmd/gptn
     - $GOPATH/bin/goveralls -service=travis-ci
