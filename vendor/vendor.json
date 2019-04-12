@@ -892,6 +892,48 @@
 			"revisionTime": "2018-05-02T07:23:49Z"
 		},
 		{
+			"checksumSHA1": "GLFNGcT5tLnfU7wJnxnUKTEN+dY=",
+			"path": "go.dedis.ch/fixbuf",
+			"revision": "966c1af8d4433e699ff72f3309a444bd16eb0508",
+			"revisionTime": "2019-01-24T15:29:07Z"
+		},
+		{
+			"checksumSHA1": "STqjfkZmEcxXSkZ2lrGB+D0odAA=",
+			"path": "go.dedis.ch/kyber/pairing/bn256",
+			"revision": "f5ea196ba5a6299e76019c99a625e51780b18648",
+			"revisionTime": "2019-03-25T09:40:42Z"
+		},
+		{
+			"checksumSHA1": "KFg5rUA+XTJaajjTqsNSyxDk2WI=",
+			"path": "go.dedis.ch/kyber/share/dkg/pedersen",
+			"revision": "f5ea196ba5a6299e76019c99a625e51780b18648",
+			"revisionTime": "2019-03-25T09:40:42Z"
+		},
+		{
+			"checksumSHA1": "C7+ZzDmZRSPRiH8Aq+VD+8rmRkg=",
+			"path": "go.dedis.ch/kyber/share/vss/pedersen",
+			"revision": "f5ea196ba5a6299e76019c99a625e51780b18648",
+			"revisionTime": "2019-03-25T09:40:42Z"
+		},
+		{
+			"checksumSHA1": "uZjAnu+3lE8M3P8lmNagBJ5jVj8=",
+			"path": "go.dedis.ch/kyber/sign/bls",
+			"revision": "f5ea196ba5a6299e76019c99a625e51780b18648",
+			"revisionTime": "2019-03-25T09:40:42Z"
+		},
+		{
+			"checksumSHA1": "qIDdKEdkSQk6tipnQLv3cnet66c=",
+			"path": "go.dedis.ch/kyber/sign/tbls",
+			"revision": "f5ea196ba5a6299e76019c99a625e51780b18648",
+			"revisionTime": "2019-03-25T09:40:42Z"
+		},
+		{
+			"checksumSHA1": "hjEG4upsJ8tZ/4TjgoICS+BBKc0=",
+			"path": "go.dedis.ch/protobuf",
+			"revision": "aaafc048527b821ddbe59e5a81fe5c05a61166b4",
+			"revisionTime": "2019-03-01T08:31:22Z"
+		},
+		{
 			"checksumSHA1": "QhDl7pO5Osv7PIdnqRy/28dzRlU=",
 			"path": "go.uber.org/atomic",
 			"revision": "1ea20fb1cbb1cc08cbd0d913a96dead89aa18289",
@@ -1022,6 +1064,12 @@
 			"path": "golang.org/x/crypto/scrypt",
 			"revision": "6a293f2d4b14b8e6d3f0539e383f6d0d30fce3fd",
 			"revisionTime": "2017-09-25T11:22:06Z"
+		},
+		{
+			"checksumSHA1": "hUsBzxJ8KTL4v0vpPT/mqvdJ46s=",
+			"path": "golang.org/x/crypto/sha3",
+			"revision": "057139ce5d2bdbe6fe73c53679e24e9cf007f637",
+			"revisionTime": "2019-01-08T20:51:12Z"
 		},
 		{
 			"checksumSHA1": "Wi44TcpIOXdojyVWkvyOBnBKIS4=",
