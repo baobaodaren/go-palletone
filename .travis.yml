@@ -11,12 +11,12 @@ go:
     - 1.10.8
 script:
     - go build ./cmd/gptn
-    - make gptn
     - $GOPATH/bin/goveralls -service=travis-ci
     - cp gptn bdd/node
     - cd bdd/node
     - pwd
     - chmod +x gptn
+    - python -V
     - python init.py
     - nohup ./gptn &
     - sleep 15
@@ -30,7 +30,7 @@ after_failure:
     - killall gptn
     
 before_install:
-    - go get github.com/mattn/goveralls
+    - go get -u github.com/mattn/goveralls
     - go get -u github.com/palletone/adaptor
     - go get -u github.com/palletone/btc-adaptor
     - go get -u github.com/palletone/eth-adaptor
@@ -38,7 +38,6 @@ before_install:
     - source ./gomockgen.sh
  
 install: 
-    - python -V
     - sudo -H pip install --upgrade pip
     - sudo -H pip install robotframework==2.8.5
     - sudo -H pip install requests
@@ -51,11 +50,3 @@ install:
 addons:
     apt:
         update: true
-
-notifications:
-    email: elva1087penny@163.com
-    email:
-        recipients:
-            - elva1087penny@163.com
-        on_success: always # default: change
-        on_failure: always
