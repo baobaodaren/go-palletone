@@ -940,6 +940,12 @@
 			"revisionTime": "2018-05-31T20:52:50Z"
 		},
 		{
+			"checksumSHA1": "eaK7NuGdfEVypOnqYniZSuF2S6s=",
+			"path": "golang.org/x/crypto/blake2b",
+			"revision": "88737f569e3a9c7ab309cdc09a07fe7fc87233c3",
+			"revisionTime": "2019-04-11T09:50:52Z"
+		},
+		{
 			"checksumSHA1": "TT1rac6kpQp2vz24m5yDGUNQ/QQ=",
 			"path": "golang.org/x/crypto/cast5",
 			"revision": "6a293f2d4b14b8e6d3f0539e383f6d0d30fce3fd",
