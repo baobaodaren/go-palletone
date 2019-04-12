@@ -25,8 +25,8 @@ import (
 	"sync"
 	"sync/atomic"
 
+	"github.com/fatih/set"
 	"github.com/palletone/go-palletone/common/log"
-	"gopkg.in/fatih/set.v0"
 )
 
 const MetadataApi = "rpc"

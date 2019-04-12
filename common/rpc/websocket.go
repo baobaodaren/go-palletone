@@ -31,7 +31,7 @@ import (
 
 	"github.com/palletone/go-palletone/common/log"
 	"golang.org/x/net/websocket"
-	"gopkg.in/fatih/set.v0"
+	"github.com/fatih/set"
 )
 
 // websocketJSONCodec is a custom JSON codec with payload size enforcement and

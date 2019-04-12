@@ -29,7 +29,7 @@ import (
 	"github.com/palletone/go-palletone/consensus/jury"
 	//"github.com/palletone/go-palletone/dag/dagconfig"
 	"github.com/palletone/go-palletone/dag/modules"
-	"gopkg.in/fatih/set.v0"
+	"github.com/fatih/set"
 	"strings"
 )
 

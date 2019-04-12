@@ -30,7 +30,7 @@ import (
 	"github.com/palletone/go-palletone/common"
 	"github.com/palletone/go-palletone/common/log"
 	"github.com/palletone/go-palletone/core/accounts"
-	"gopkg.in/fatih/set.v0"
+	"github.com/fatih/set"
 )
 
 // Minimum amount of time between cache reloads. This limit applies if the platform does

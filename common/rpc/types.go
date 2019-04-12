@@ -24,7 +24,7 @@ import (
 	"sync"
 
 	"github.com/palletone/go-palletone/common/hexutil"
-	"gopkg.in/fatih/set.v0"
+	"github.com/fatih/set"
 )
 
 // API describes the set of methods offered over the RPC interface

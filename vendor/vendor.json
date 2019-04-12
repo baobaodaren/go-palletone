@@ -291,6 +291,12 @@
 			"revisionTime": "2017-02-09T08:00:14Z"
 		},
 		{
+			"checksumSHA1": "m3SuR53rYfu2Vxxv623kvw7vhac=",
+			"path": "github.com/fatih/set",
+			"revision": "2c768e3c5489976167bfc42b5c7c92ca783f4389",
+			"revisionTime": "2018-08-03T06:55:37Z"
+		},
+		{
 			"checksumSHA1": "Jq1rrHSGPfh689nA2hL1QVb62zE=",
 			"path": "github.com/fjl/memsize",
 			"revision": "ca190fb6ffbc076ff49197b7168a760f30182d2e",
@@ -1236,12 +1242,6 @@
 			"path": "gopkg.in/check.v1",
 			"revision": "20d25e2804050c1cd24a7eea1e7a6447dd0e74ec",
 			"revisionTime": "2016-12-08T18:13:25Z"
-		},
-		{
-			"checksumSHA1": "NGg7/qIJVUfXi7xnEyyDLocdi6Y=",
-			"path": "gopkg.in/fatih/set.v0",
-			"revision": "27c40922c40b43fe04554d8223a402af3ea333f3",
-			"revisionTime": "2014-12-10T08:48:24Z"
 		},
 		{
 			"checksumSHA1": "DQXNV0EivoHm4q+bkdahYXrjjfE=",

@@ -25,7 +25,7 @@ import (
 	"time"
 
 	"github.com/palletone/go-palletone/common/log"
-	set "gopkg.in/fatih/set.v0"
+	set "github.com/fatih/set"
 )
 
 // fileCache is a cache of files seen during scan of keystore.
