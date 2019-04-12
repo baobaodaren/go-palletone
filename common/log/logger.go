@@ -22,13 +22,14 @@ package log
 
 import (
 	"fmt"
+	"log"
+	"strings"
+	"sync"
+
 	"github.com/palletone/go-palletone/common/files"
 	"go.uber.org/zap"
 	"go.uber.org/zap/zapcore"
 	"gopkg.in/natefinch/lumberjack.v2"
-	"log"
-	"strings"
-	"sync"
 )
 
 const (
@@ -124,7 +125,8 @@ func initLogger() {
 			LogConfig.OpenModule = append(LogConfig.OpenModule, defaultLogModule...)
 		}
 	}
-	l.SetOpenModule(LogConfig.OpenModule)
+	//TODO Devin: don't edit vendor code, use another way.
+	// l.SetOpenModule(LogConfig.OpenModule)
 	l = l.WithOptions(zap.AddCallerSkip(1))
 	if LogConfig.RotationMaxSize > 0 {
 		includeStdout, filePath := getOutputPath(LogConfig.OutputPaths)
