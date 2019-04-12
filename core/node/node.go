@@ -35,7 +35,7 @@ import (
 	"github.com/palletone/go-palletone/core/accounts/keystore"
 	"github.com/palletone/go-palletone/dag/storage"
 	"github.com/palletone/go-palletone/internal/debug"
-	"github.com/prometheus/prometheus/util/flock"
+	flock "github.com/prometheus/tsdb/fileutil"
 )
 
 // Node is a container on which services can be registered.
